@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>webapp</groupId>
+    <artifactId>webapp</artifactId>
+    <packaging>war</packaging>
+    <version>1.0</version>
+    <name>webapp Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.moyrax.qunit</groupId>
+            <artifactId>qunit-maven-plugin</artifactId>
+            <version>1.2.3</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>moyrax-releases</id>
+            <name>Moyrax Artifactory</name>
+            <url>http://www.moyrax.com:8081/nexus/content/repositories/moyrax-releases/</url>
+            <layout>default</layout>
+
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>moyrax-releases</id>
+            <name>Moyrax Artifactory</name>
+            <url>http://www.moyrax.com:8081/nexus/content/repositories/moyrax-releases/</url>
+            <layout>default</layout>
+
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.moyrax.qunit</groupId>
+                <artifactId>qunit-maven-plugin</artifactId>
+                <version>1.2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- Configures the lookup directory for JavaScript resources. -->
+                    <contextPath>
+                        <entry>
+                            <!-- Files included in the JavaScript context path. -->
+                            <files>
+                                <directory>src/main/resources/</directory>
+                                <includes>
+                                    <include>**/*.js</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>**/.svn/**</exclude>
+                                </excludes>
+                            </files>
+                        </entry>
+                    </contextPath>
+
+                    <testResources>
+                        <directory>src/test/webapp</directory>
+                        <includes>
+                            <include>**/*-test.html</include>
+                        </includes>
+                    </testResources>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>ticktacktoe</finalName>
+    </build>
+</project>

@@ -1,0 +1,19 @@
+#board {
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+td {
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+.winning-cell {
+    background-color: red;
+}
+

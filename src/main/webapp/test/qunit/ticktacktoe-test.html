@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+
+    <link rel="stylesheet" href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css" type="text/css" media="screen"/>
+    <script type="text/javascript" src="http://github.com/jquery/qunit/raw/master/qunit/qunit.js"></script>
+
+    <script type="text/javascript" src="../../js/jquery-1.4.3.js"></script>
+    <script type="text/javascript" src="../../js/games.js"></script>
+    <script type="text/javascript" src="../../js/ticktacktoe.js"></script>
+
+    <script type="text/javascript">
+        //ticktacktoe.currentPlayer
+        $(document).ready(function() {
+
+            module("Given an empty board, ", {
+                setup: function() {
+                    Games.TickTackToe.newGame();
+                }
+            });
+
+            test("the first player is always 'X'", function() {
+                Games.TickTackToe.play(0,0);
+                equals(Games.TickTackToe.getPlayer(0,0), 'X');
+            });
+
+            test("the second player is always 'O'", function() {
+                Games.TickTackToe.play(0,0);
+                Games.TickTackToe.play(1,1);
+
+                equals(Games.TickTackToe.getPlayer(1,1), 'O');
+            });
+
+
+            module("Given a board where X can win horizontally, ", {
+                setup: function() {
+                    Games.TickTackToe.newGame();
+                    Games.TickTackToe.play(2,2);
+                    Games.TickTackToe.play(1,2);
+                    Games.TickTackToe.play(2,1);
+                    Games.TickTackToe.play(1,1);
+                }
+            });
+
+            test("a winning 'X' move should win the game", function() {
+                Games.TickTackToe.play(2,0);
+                equals(Games.TickTackToe.hasWinner().player, 'X');
+            });
+
+        });
+    </script>
+
+<body>
+<h1 id="qunit-header">QUnit example</h1>
+
+<h2 id="qunit-banner"></h2>
+
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>

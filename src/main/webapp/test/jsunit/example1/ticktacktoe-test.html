@@ -1,0 +1,26 @@
+<html>
+ <head>
+  <title>Test Page for Games.TickTackToe</title>
+     <script type="text/javascript" src="../../../js/jquery-1.4.3.js"></script>
+     <script type="text/javascript" src="../../../js/games.js"></script>
+     <script type="text/javascript" src="../../../js/ticktacktoe.js"></script>
+ </head>
+ <body>
+  <script type="text/javascript">
+    function setUp() {
+        Games.TickTackToe.newGame();
+    }
+
+    function test_the_first_player_is_always_X() {
+        Games.TickTackToe.play(0,0);
+        assertEquals('X', Games.TickTackToe.getPlayer(0,0));
+    }
+
+    function test_the_first_player_is_always_X() {
+        Games.TickTackToe.play(0,0);
+        Games.TickTackToe.play(1,1);
+        assertEquals('O', Games.TickTackToe.getPlayer(1,1));
+    }
+  </script>
+ </body>
+</html>

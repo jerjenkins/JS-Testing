@@ -1,0 +1,3 @@
+var Games = (function() {
+    return {};
+})();
